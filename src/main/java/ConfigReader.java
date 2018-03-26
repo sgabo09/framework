@@ -25,6 +25,18 @@ public class ConfigReader {
         }
     }
 
+    public String getChromeDriverPath(){
+        return properties.getProperty("chromeDriver");
+    }
+
+    public String getFirefoxDriverPath(){
+        return properties.getProperty("firefoxDriver");
+    }
+
+    public String getEdgeDriverPath(){
+        return properties.getProperty("edgeDriver");
+    }
+
     public long getDefaultWait(){
         return Long.parseLong(properties.getProperty("defaultWait"));
     }
@@ -32,8 +44,4 @@ public class ConfigReader {
     public long getImplicitlyWait(){
         return Long.parseLong(properties.getProperty("implicitlyWait"));
     }
-
-    //public boolean getIsMaximized
-
-
 }
