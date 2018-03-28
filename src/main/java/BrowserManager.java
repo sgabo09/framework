@@ -1,9 +1,10 @@
 
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class BrowserManager {
     }
 
 
-    public static WebDriver getBrowser(Browsers browser){
+    public static WebDriver getBrowser(BrowserType browser){
         WebDriver driver = null;
         switch(browser)
         {
@@ -29,6 +30,12 @@ public class BrowserManager {
                     driver.manage().timeouts().pageLoadTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().implicitlyWait(new ConfigReader().getImplicitlyWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().setScriptTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
+                    if(new ConfigReader().getMaximized()){
+                        driver.manage().window().maximize();
+                    }else{
+                        driver.manage().window().setPosition(new Point(0,0));
+                        driver.manage().window().setSize(new Dimension(new ConfigReader().getBrowserWidth(),new ConfigReader().getBrowserHeight()));
+                    }
                     drivers.put("Chrome", driver);
                 }
             }
@@ -42,6 +49,12 @@ public class BrowserManager {
                     driver.manage().timeouts().pageLoadTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().implicitlyWait(new ConfigReader().getImplicitlyWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().setScriptTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
+                    if(new ConfigReader().getMaximized()){
+                        driver.manage().window().maximize();
+                    }else{
+                        driver.manage().window().setPosition(new Point(0,0));
+                        driver.manage().window().setSize(new Dimension(new ConfigReader().getBrowserWidth(),new ConfigReader().getBrowserHeight()));
+                    }
                     drivers.put("Firefox", driver);
                 }
             }
@@ -55,6 +68,12 @@ public class BrowserManager {
                     driver.manage().timeouts().pageLoadTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().implicitlyWait(new ConfigReader().getImplicitlyWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().setScriptTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
+                    if(new ConfigReader().getMaximized()){
+                        driver.manage().window().maximize();
+                    }else{
+                        driver.manage().window().setPosition(new Point(0,0));
+                        driver.manage().window().setSize(new Dimension(new ConfigReader().getBrowserWidth(),new ConfigReader().getBrowserHeight()));
+                    }
                     drivers.put("Edge", driver);
                 }
             }

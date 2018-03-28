@@ -1,4 +1,4 @@
-public enum Browsers {
+public enum BrowserType {
     CHROME,
     FIREFOX,
     EDGE

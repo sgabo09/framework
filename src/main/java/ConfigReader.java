@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class ConfigReader {
     private Properties properties;
-    private static final String configPath = "src/main/config/timeout.properties";
+    private static final String configPath = "src/main/config/config.properties";
 
     public ConfigReader(){
         BufferedReader reader;
@@ -35,6 +35,18 @@ public class ConfigReader {
 
     public String getEdgeDriverPath(){
         return properties.getProperty("edgeDriver");
+    }
+
+    public Boolean getMaximized(){
+        return Boolean.parseBoolean(properties.getProperty("browserMaximize"));
+    }
+
+    public int getBrowserWidth(){
+        return Integer.parseInt(properties.getProperty("browserWidth"));
+    }
+
+    public int getBrowserHeight(){
+        return Integer.parseInt(properties.getProperty("browserHeight"));
     }
 
     public long getDefaultWait(){
