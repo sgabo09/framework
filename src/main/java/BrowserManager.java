@@ -1,8 +1,8 @@
-
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class BrowserManager {
+public final class BrowserManager {
     private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
     public BrowserManager(){
@@ -25,8 +25,10 @@ public class BrowserManager {
             {
                 driver = drivers.get("Chrome");
                 if(driver == null){
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--disable-notifications");
                     System.setProperty("webdriver.chrome.driver", new ConfigReader().getChromeDriverPath());
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(options);
                     driver.manage().timeouts().pageLoadTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().implicitlyWait(new ConfigReader().getImplicitlyWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().setScriptTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
@@ -84,7 +86,6 @@ public class BrowserManager {
     public static void closeBrowsers(){
         for (String i : drivers.keySet())
         {
-            drivers.get(i).close();
             drivers.get(i).quit();
         }
     }
