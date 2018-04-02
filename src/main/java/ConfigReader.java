@@ -6,9 +6,19 @@ import java.util.Properties;
 
 public class ConfigReader {
     private Properties properties;
-    private static final String configPath = "src/main/config/config.properties";
+    private String configPath;
 
     public ConfigReader(){
+        this.configPath = "src/main/config/config.properties";
+        loadConfig();
+    }
+
+    public ConfigReader(String configPath){
+        this.configPath = configPath;
+        loadConfig();
+    }
+
+    private void loadConfig(){
         BufferedReader reader;
         try{
             reader = new BufferedReader(new FileReader(configPath));
