@@ -15,10 +15,10 @@ public class Facebook {
 
     @Test
     public void loginViaFacebook(){
-        WebDriver driver = BrowserManager.getBrowser(BrowserType.EDGE);
+        WebDriver driver = BrowserManager.getBrowser(BrowserType.FIREFOX );
         driver.get("http://www.mindmegette.hu/bejelentkezes/");
         WebElement fb_log = driver.findElement(By.cssSelector("a[class='facebook-login social-login']"));
         fb_log.click();
-        FacebookLogin.popUpLogin("gabo09@indamail.hu","chelshika96",driver);
+        FacebookLogin.popUpLogin("alama@korte.hu","password",driver);
     }
 }

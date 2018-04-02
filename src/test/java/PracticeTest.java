@@ -11,6 +11,9 @@ public class PracticeTest {
 
     @Test
     public void google(){
+        UserManager um = new UserManager();
+        System.out.println(um.getUser("pali").getEmail() + " " + um.getUser("pali").getPassword());
+        System.out.println(um.getUserEmail("pali") + " " + um.getUserPassword("pali"));
         WebDriver chrome = BrowserManager.getBrowser(BrowserType.CHROME);
         chrome.get("http://mindmegette.hu");
     }
