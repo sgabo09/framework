@@ -6,8 +6,8 @@ import java.util.*;
 
 public class UserManager {
     private Map<String,User> users = new HashMap<String, User>();
-    Map<String,String> userpasswords = new HashMap<String, String>();
-    Map<String,String> useremails = new HashMap<String, String>();
+    private  Map<String,String> userpasswords = new HashMap<String, String>();
+    private Map<String,String> useremails = new HashMap<String, String>();
     private String usersPath;
     private Properties properties;
 
@@ -41,24 +41,24 @@ public class UserManager {
     }
 
     private void usersLoad(){
-        ArrayList<String> usernames = new ArrayList<String>();
+        ArrayList<String> userNames = new ArrayList<String>();
         Enumeration keys = properties.keys();
         while (keys.hasMoreElements()){
-            String propertyname = (String) keys.nextElement();
-            String value = properties.getProperty(propertyname);
-            String [] parts = propertyname.split("[.]");
+            String propertyName = (String) keys.nextElement();
+            String value = properties.getProperty(propertyName);
+            String [] parts = propertyName.split("[.]");
             if(parts[1].equals("email")){
                 useremails.put(parts[0],value);
             }else if (parts[1].equals("password")){
                 userpasswords.put(parts[0],value);
             }
-            if(!usernames.contains(parts[0])){
-                usernames.add(parts[0]);
+            if(!userNames.contains(parts[0])){
+                userNames.add(parts[0]);
             }
         }
-        for(int i = 0; i < usernames.size(); i++)
+        for(int i = 0; i < userNames.size(); i++)
         {
-            users.put(usernames.get(i), new User(useremails.get(usernames.get(i)), userpasswords.get(usernames.get(i))));
+            users.put(userNames.get(i), new User(useremails.get(userNames.get(i)), userpasswords.get(userNames.get(i))));
         }
     }
 

@@ -1,21 +1,20 @@
 import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class PracticeTest {
+    WebDriver chrome = BrowserManager.getBrowser(BrowserType.CHROME);
+
+    @Rule
+    public TestTracer testTracer = new TestTracer(chrome);
 
     @Test
     public void google(){
         UserManager um = new UserManager();
-        System.out.println(um.getUser("pali").getEmail() + " " + um.getUser("pali").getPassword());
-        System.out.println(um.getUserEmail("pali") + " " + um.getUserPassword("pali"));
-        WebDriver chrome = BrowserManager.getBrowser(BrowserType.CHROME);
         chrome.get("http://mindmegette.hu");
+        chrome.findElement(By.id("aaaaaaasasdasadsadsadsad"));
     }
 /*
     @Test

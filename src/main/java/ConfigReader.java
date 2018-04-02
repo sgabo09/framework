@@ -66,4 +66,6 @@ public class ConfigReader {
     public long getImplicitlyWait(){
         return Long.parseLong(properties.getProperty("implicitlyWait"));
     }
+
+    public String getScreenshotDirectory() { return  properties.getProperty("screenshotDirectory"); }
 }
