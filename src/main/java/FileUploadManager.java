@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-public class FileUploadManager  {
+public final class FileUploadManager  {
 
     public FileUploadManager(){
 
