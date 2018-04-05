@@ -1,5 +1,3 @@
-import org.junit.AfterClass;
-import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,30 +5,16 @@ import org.openqa.selenium.WebDriver;
 public class PracticeTest {
     WebDriver chrome = BrowserManager.getBrowser(BrowserType.CHROME);
 
-    @Rule
-    public TestTracer testTracer = new TestTracer(chrome);
-
     @Test
-    public void google(){
+    public void login(){
         UserManager um = new UserManager();
-        chrome.get("http://mindmegette.hu");
-        chrome.findElement(By.id("aaaaaaasasdasadsadsadsad"));
-    }
-/*
-    @Test
-    public void mozilla(){
-        WebDriver firefox = BrowserManager.getBrowser(BrowserType.FIREFOX);
-        firefox.get("https://index.hu");
-    }
-
-    @Test
-    public void edge(){
-        WebDriver edge = BrowserManager.getBrowser(BrowserType.EDGE);
-        edge.get("https://microsoft.com");
-    }
-*/
-    @AfterClass
-    public static void cleanUp(){
-        BrowserManager.closeBrowsers();
+        chrome.get("http://mindmegette.hu/bejelentkezes");
+        chrome.findElement(By.cssSelector("span[class='button button-green medium i-agree']")).click();
+        chrome.findElement(By.id("right-label")).sendKeys("somogyi.gabor");
+        chrome.findElement(By.id("password")).sendKeys("gabo96");
+        chrome.findElement(By.id("btnLoginSubmit")).click();
+        chrome.findElement(By.cssSelector("a[class='button button-green with-icon edit']")).click();
+        chrome.findElement(By.cssSelector("span[class='add dz-clickable']")).click();
+        FileUploadManager.fileUploadWindow("D:\\MIK\\Szakdolgozat\\Project\\eatingkid.jpg");
     }
 }

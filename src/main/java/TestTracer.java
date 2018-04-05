@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestTracer extends TestWatcher{
+public final class TestTracer extends TestWatcher{
     private WebDriver driver;
 
     public TestTracer(WebDriver driver){
