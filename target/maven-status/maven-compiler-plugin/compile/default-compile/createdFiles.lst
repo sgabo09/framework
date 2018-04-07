@@ -1,0 +1,9 @@
+hu\selenium\BrowserType.class
+hu\selenium\FileUploadManager.class
+hu\selenium\UserManager.class
+hu\selenium\TestTracer.class
+hu\selenium\BrowserManager$1.class
+hu\selenium\BrowserManager.class
+hu\selenium\ConfigReader.class
+hu\selenium\FacebookLogin.class
+hu\selenium\User.class
