@@ -1,3 +1,5 @@
+package hu.selenium;
+
 public class User {
     private String email, password;
 

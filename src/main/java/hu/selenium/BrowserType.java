@@ -1,3 +1,5 @@
+package hu.selenium;
+
 public enum BrowserType {
     CHROME,
     FIREFOX,
