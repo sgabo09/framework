@@ -37,9 +37,4 @@ public final class TestTracer extends TestWatcher{
             throw new RuntimeException(ioe);
         }
     }
-
-    @Override
-    protected void finished(Description description){
-        driver.quit();
-    }
 }

@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,8 +50,12 @@ public final class BrowserManager {
             {
                 driver = drivers.get("Firefox");
                 if(driver == null){
+                    FirefoxProfile profile = new FirefoxProfile();
+                    profile.setPreference("dom.webnotifications.enabled", false);
+                    FirefoxOptions options = new FirefoxOptions();
+                    options.setProfile(profile);
                     System.setProperty("webdriver.gecko.driver", new ConfigReader().getFirefoxDriverPath());
-                    driver = new FirefoxDriver();
+                    driver = new FirefoxDriver(options);
                     driver.manage().timeouts().pageLoadTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().implicitlyWait(new ConfigReader().getImplicitlyWait(),TimeUnit.SECONDS);
                     driver.manage().timeouts().setScriptTimeout(new ConfigReader().getDefaultWait(),TimeUnit.SECONDS);
@@ -91,5 +97,4 @@ public final class BrowserManager {
             drivers.get(i).quit();
         }
     }
-
 }
