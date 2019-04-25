@@ -14,6 +14,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static org.openqa.selenium.remote.BrowserType.CHROME;
+import static org.openqa.selenium.remote.BrowserType.EDGE;
+import static org.openqa.selenium.remote.BrowserType.FIREFOX;
+
 public final class BrowserManager {
     private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
@@ -21,7 +25,7 @@ public final class BrowserManager {
     }
 
 
-    public static WebDriver getBrowser(BrowserType browser){
+    public static WebDriver getBrowser(String browser){
         WebDriver driver = null;
         switch(browser)
         {

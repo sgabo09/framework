@@ -37,6 +37,10 @@ public final class ConfigReader {
         }
     }
 
+    public String getPropety(String propertyKey){
+        return properties.getProperty(propertyKey);
+    }
+
     public String getChromeDriverPath(){
         return properties.getProperty("chromeDriver");
     }

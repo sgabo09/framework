@@ -8,7 +8,7 @@ import java.util.*;
 
 public final class UserManager {
     private Map<String,User> users = new HashMap<String, User>();
-    private  Map<String,String> userpasswords = new HashMap<String, String>();
+    private Map<String,String> userpasswords = new HashMap<String, String>();
     private Map<String,String> useremails = new HashMap<String, String>();
     private String usersPath;
     private Properties properties;
